@@ -1,0 +1,121 @@
+@import url("global.css");
+
+#game {
+    width:1024px; height:768px;
+}
+
+#left-pane{border:0px solid red; float:left;}
+
+#right-pane {float:right; width:400px;}
+
+#tile-bank {
+    width:320px;
+    margin: 0;
+    border:5px ridge white;
+}
+
+#tile-bank li {
+    display: inline-block;
+    width: 58px;
+    /*float: left;*/
+    margin: 20px;
+}
+
+img.tile {
+    width: 56px;
+    height: 56px;
+}
+
+.animated {
+}
+
+.flipped-horizontal-right {  
+    transform: rotateY(360deg);
+    -ms-transform: rotateY(360deg); /* IE 9 */
+    -webkit-transform: rotateY(360deg); /* Safari and Chrome */
+    -o-transform: rotateY(360deg); /* Opera */
+    -moz-transform: rotateY(360deg); /* Firefox */
+    transition: .9s ease-out;
+    -ms-transition: .9s ease-out;
+    -webkit-transition: .9s ease-out;
+    -o-transition: .9s ease-out;
+    -moz-transition: .9s ease-out;
+}
+
+div.blank {border-style: inset; width:41px; height:45px;}
+
+hr.blank {width:41px; height:2px;}
+
+ul.trays {
+    margin:0 0 0 0;
+}
+
+ul.trays>li {
+    display:table;
+    margin: 0 0 20px 0;
+}
+
+ul.trays>li>.button-group {
+    display:table-cell;
+    vertical-align: top;
+    margin-right: 10px;
+}
+
+ul.trays>li>img.traycap {
+    vertical-align: bottom;
+    float: left;
+}
+
+ul.tray {
+    background: url(/res/images/tray-middle.png) repeat-x;
+    /*border: 5px ridge white;*/
+    display: inline-block;
+    float: left;
+    height: 74px;
+    width: 456px;
+    /*-webkit-padding-start: 0px;*/
+    margin: 0 0 10px 0px;
+}
+
+ul.tray.active {
+    border-color: #D9A55B;
+}
+
+ul.tray>li {display:inline-block;}
+
+ul.tray>li.new {border: 1px solid red;}
+
+div#footer {text-align:center; clear:both;}
+
+.score {
+    color: red;
+    font-style: bold;
+}
+
+#total-score {
+    background: url(/res/images/total-score.png) no-repeat top left;
+    width: 300px;
+    height: 75px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 2em;
+}
+#temp-score {
+    float:left;
+    width:25%;
+    font-size: .75em;
+    border:0px solid red;
+}
+
+button.empty-tray {
+    margin-right: 10px;
+}
+
+button.btn-theme {
+    width: 162px;
+    height: 110px;
+}
+
+label {
+    margin-top: 20px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+        <style>
+        ul.trays {
+            margin:0 0 0 0;
+            -webkit-padding-start: 0px;
+        }
+
+        ul.trays>li {
+            display:table;
+            margin: 0 0 20px 0;
+            /*height: 74px;*/
+        }
+
+        ul.trays>li>img.traycap {
+            vertical-align: bottom;
+            /*float: left;*/
+        }
+
+        ul.tray {
+            display: inline-block;
+            /*float: left;*/ /* if this is float left, then ul.trays>li>img.traycap also needs to be*/
+            background: url('res/images/tray-middle.png') repeat-x;
+            height: 73px;
+            -webkit-padding-start: 0px;
+        }
+
+        ul.tray>li {
+            display:inline-block;
+        }
+        </style>
+    </head>
+    <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+    <!--script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.js"></script-->
+    <!--script src="http://smithgame.com/ext/jquery.ui.touch-punch.min.js"></script-->
+    <script>
+    $(function() {
+        $( '.tray' ).sortable( {
+            start: function(event, ui) { ui.placeholder.html('&nbsp;'); }
+        }).disableSelection();    
+    });
+    </script>
+    
+    <body>
+        <ul class="trays">
+            <li><img class="traycap" src="res/images/tray-leftcap.png"/>
+                <ul class="tray">
+                    <li><img src="res/images/tiles/a.png"/></li><li><img src="res/images/tiles/b.png"/></li><li><img src="res/images/tiles/c.png"/></li><li><img src="res/images/tiles/d.png"/></li><li><img src="res/images/tiles/e.png"/></li>
+                </ul>
+                <img class="traycap" src="res/images/tray-rightcap.png"/>
+            </li>
+            <li><img class="traycap" src="res/images/tray-leftcap.png"/>
+                <ul class="tray">
+                    <li><img src="res/images/tiles/f.png"/></li>
+                    <li><img src="res/images/tiles/g.png"/></li>
+                    <li><img src="res/images/tiles/h.png"/></li>
+                    <li><img src="res/images/tiles/i.png"/></li>
+                    <li><img src="res/images/tiles/j.png"/></li>
+                    <li><img src="res/images/tiles/k.png"/></li>
+                </ul>
+                <img class="traycap" src="res/images/tray-rightcap.png"/>
+            </li>
+            <li><img class="traycap" src="res/images/tray-leftcap.png"/>
+                <ul class="tray">
+                    <li><img src="res/images/tiles/l.png"/></li>
+                    <li><img src="res/images/tiles/m.png"/></li>
+                    <li><img src="res/images/tiles/n.png"/></li>
+                    <li><img src="res/images/tiles/o.png"/></li>
+                    <li><img src="res/images/tiles/p.png"/></li>
+                    <li><img src="res/images/tiles/q.png"/></li>
+                    <li><img src="res/images/tiles/r.png"/></li>
+                </ul>
+                <img class="traycap" src="res/images/tray-rightcap.png"/>
+            </li>
+        </ul>
+    </body>
+</html>

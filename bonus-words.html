@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>    
+    <head>
+        <script>document.writeln('<title>' + document.domain + ': Smith Word Game Bonus Words</title>');</script>
+        <link rel="stylesheet" type="text/css" href="css/smith.css">
+        <script src="ext/enums.js"></script>
+        <script src="ext/jquery-1.8.3.min.js"></script>
+        <script src="ext/bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/smith.js"></script>
+        <script>
+        $(function() {
+            var themeWords = '';
+            for( var i in THEMES.symbols() ) {
+                var theme = THEMES.symbols()[i];
+                var collapseDivId = 'collapse-' + theme.name;
+                themeWords += '<div class="accordion-group">';
+                themeWords += '<div class="accordion-heading">'
+                                + '<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#' + collapseDivId + '">' + theme.name + '</a>'
+                            + '</div>';
+                themeWords += '<div id="' + collapseDivId + '" class="accordion-body collapse';
+                // show folder first theme's words expanded; show others collapsed
+                if( i == 0 ) {
+                    themeWords += ' in';
+                }
+                themeWords += '">';
+                themeWords += '    <div class="accordion-inner">'
+                                  + '<img src="/res/images/background-' + theme.name + '.png"/>' + theme.wordList.join(', ')
+                                + '</div>'
+                            + '</div>';
+                themeWords += '</div>'; //close accordion-group div element
+
+                //themeWords += '<dt>' + theme.name + '</dt>' + '<dd>' + theme.wordList.join(', ') + '</dd>';
+            }
+            $('#accordion').html(themeWords);
+        });
+        </script>
+    </head>
+    
+    <body>
+        <div class="page-header"><h1>Bonus Words</h1></div>
+
+        <div class="accordion" id="accordion">
+
+        </div>
+
+        <!--
+            <dl id="theme-words">
+            </dl>
+        -->
+
+        <p>When the player starts a new game, a screen will appear which will allow the player to choose one of three themes: silversmith, locksmith, or no theme. When the player presses the icon for the theme that he chooses another screen will appear with the bonus words for that theme.  An icon on that screen will say "Start Game." The player will press this icon when he has finished looking at the bonus words and would like to start playing.</p>
+
+        <p>Bonus words will award player with additional points in the following manner:</p>
+        <ul>
+        <li>3-letter bonus word: 100 additional points</li>
+        <li>4-letter bonus word: 200 additional points</li>
+        <li>5- letter bonus word: 300 additional points</li>
+        <li>6-letter bonus word: 400 additional points</li>
+        </ul>
+
+        <p>When player forms a bonus word, the bubble that appears will show the value of the word and the additional points for the bonus word (see illustration below for example:</p>
+        <button id="main-menu" class="btn btn-large"><a href="index.html">Main Menu</a></button>
+    </body>
+</html>

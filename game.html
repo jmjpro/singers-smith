@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- TODO - implement sortable interface for tray tiles - integrate code
+for loading dictionary and checking word - implement 4 second and 10 second
+timers - implement scoring - low: random placement and orientation of tiles
+in tile box? -->
+<html>
+    
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            document.writeln('<title>' + document.domain + ': Smith Word Game</title>');
+        </script>
+        <!--link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css"
+        /-->
+        <link rel="stylesheet" type="text/css" href="css/game.css">
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
+        <script src="ext/jquery.ui.touch-punch.min.js"></script>
+        <script src="ext/enums.js"></script>
+        <script src="ext/bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/smith.js"></script>
+        <script src="js/game.js"></script>
+    </head>
+    
+    <body>
+        <audio id="sound-fill-tray" src="res/audio/fill-tray.m4a" preload="auto"></audio>
+        <audio id="sound-invalid-word" src="res/audio/invalid-word.mp3" preload="auto"></audio>
+        <audio id="sound-new-tile" src="res/audio/new-tile.mp3" preload="auto"></audio>
+        <audio id="sound-tile-gone" src="res/audio/tile-gone.mp3" preload="auto"></audio>
+        <audio id="sound-trash-tray" src="res/audio/trash-tray.mp3" preload="auto"></audio>
+        <audio id="sound-valid-word" src="res/audio/valid-word.mp3" preload="auto"></audio>
+
+        <div id="smithalert" class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <span id="lod"></span> || <span id="theme"></span><br/>
+            TODO
+            <ul>
+            <li>implement bonus logic</li>
+            <li>logic for incorrect words (send tiles back)</li>
+            </ul>
+        </div>
+        <div id="modal-level-and-theme" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Choose Smith Level and Theme" aria-hidden="true" data-show="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Choose Smith Level and Theme</h3>
+            </div>
+            <div class="modal-body">
+                <div class="divDialogElements">
+                    <label>Level</label>
+                    <div class="btn-group" data-toggle="buttons-radio">
+                        <button id="easy" name="level" class="btn" value="easy" title="6-letter words max">Easy</button>
+                        <button id="medium" name="level" class="btn" value="medium" title="7-letter words max">Medium</button>
+                        <button id="difficult" name="level" class="btn" value="difficult" title="8-letter words max">Difficult</button>
+                    </div>
+
+                    <label>Theme</label>
+                    <div class="btn-group" data-toggle="buttons-radio">
+                        <button id="silversmith" name="theme" class="btn btn-theme" value="silversmith">Silversmith <img src="res/images/background-silversmith.png"</button>
+                        <button id="locksmith" name="theme" class="btn btn-theme" value="locksmith">Locksmith <img src="res/images/background-locksmith.png"</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel" class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button id="ok" data-dismiss="modal" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+
+        <div id="game">
+            <div>
+                <div id="main">
+                    <div id="left-pane">
+                        <div class="page-header"></div>
+                        <ul class="trays"></ul>
+                    </div>
+                    <div id="right-pane">
+                        <div id="total-score" width="300" height="300">0</div>
+                        <span id="remaining-tiles"></span><br/>
+                        <span id="add-tile-timer"></span>
+                        <ul id="tile-bank">
+                        </ul>
+                        <span id="remove-tile-timer"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                Copyright 2013 BSD Media All Rights Reserved
+                <button id="main-menu" class="btn btn-large"><a href="index.html">Main Menu</a></button>
+                <button id="show-alert" class="btn btn-large">Show Alert</a></button>
+            </div>
+        </div>
+    </body>
+</html>

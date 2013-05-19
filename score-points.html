@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <script>document.writeln('<title>' + document.domain + ': Smith Word Game Scoring</title>');</script>
+        <link rel="stylesheet" type="text/css" href="css/smith.css">
+        <script src="ext/enums.js"></script>
+        <script src="ext/jquery-1.8.3.min.js"></script>
+        <script src="ext/node_modules/lodash/lodash.js"></script>
+        <script src="js/smith.js"></script>
+        <script>
+        $(function() {
+        	// show letters A-Z in a 4x7 grid
+        	/*
+        	var i=0;
+        	var letters = Object.keys(LETTER_OCCURRENCE_MAP).sort();
+        	for( var r = 0; r < 7; r++) {
+        		var row = '<tr>'
+        		for( var c=0; c<4; c++) {
+        			if( i<26) {
+        				row += '<td><img class="tile-large" src="res/images/tiles/' + letters[i].toUpperCase() + '.png"/></td><td><span class="letter-occurrence-count">' + LETTER_OCCURRENCE_MAP[letters[i++]] + '</span></td>';
+        			}
+        		}
+        		row += '</tr>';
+				$('#letter-occurrence-count tr:last').after(row);
+        	}
+        	*/
+        	for( var letter in LETTER_POINT_MAP ) {
+                $( '#point-values > thead:last' ).append('<th>' + letter.toUpperCase() + '</th>');
+            }
+            for( var letter in LETTER_POINT_MAP ) {
+                $( '#point-values > tbody:last' ).append('<td>' + LETTER_POINT_MAP[letter] + '</td>');
+        	}        	
+
+            for( var letter in LETTER_OCCURRENCE_MAP ) {
+                $( '#letter-counts > thead:last' ).append('<th>' + letter.toUpperCase() + '</th>');
+            }
+            for( var letter in LETTER_OCCURRENCE_MAP ) {
+                $( '#letter-counts > tbody:last' ).append('<td>' + LETTER_OCCURRENCE_MAP[letter] + '</td>');
+            }
+
+        });
+        </script>
+    </head>
+    
+    <body>
+        <div class="page-header"><h1>How to Score Points</h1></div>
+        <p>
+			Each word formed contributes to the total score by multiplying the sum of the values of each letter in the word by the number of letters in the word. For example, the word "dive" has a value of 36. (3 + 1 + 4 + 1) * 4
+		</p>
+		<p>
+			Consider the following sequence of plays:
+			<ol>
+				<li>Player forms the word "car" in row #3. He receives (3 + 1 + 3) * 3 = 21 points for the word "car"</li>
+				<li>Later in the game he turns the word "car" into "trace". He now receives (3 + 3 + 1 + 3 + 1) * 5 = 55 points for the word "trace."</li>
+				<li>Later in the game he turns the word "trace" into "caters". He receives (3 + 1 + 3 + 1 + 3 + 3) * 6 = 84 points for the word "caters"</li>
+			</ol>
+		</p>
+		<p>
+			At this point the player has accumulated 160 points for his entries into row #3. Now the word "caters" disappears since it is a six letter word and the player can begin a new word in row #3 and start accumulating more points. 
+        </p>
+        <table id="point-values" class="scoring">
+            <caption>Tiles and their point values</caption>
+            <thead>
+                <tr></tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
+
+        <table id="letter-counts" class="scoring">
+            <caption>Tiles and their maximum number of occurrences in one game</caption>
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <button id="main-menu" class="btn btn-large"><a href="index.html">Main Menu</a></button>
+    </body>
+</html>
